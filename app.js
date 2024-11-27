@@ -35,12 +35,12 @@ const questions = [
     { question: "What is the capital of Spain?", options: ["Barcelona", "Madrid", "Sevilla", "Valencia"], correctAnswer: "Madrid" }
 ];
 
-// Track quiz state
+
 let currentQuestionIndex = 0;
 let score = 0;
 let selectedAnswer = "";
 
-// DOM Elements
+
 const questionContainer = document.getElementById("question-container");
 const feedbackContainer = document.getElementById("feedback");
 const nextBtn = document.getElementById("next-btn");
@@ -48,7 +48,7 @@ const scoreContainer = document.getElementById("score-container");
 const scoreDisplay = document.getElementById("score");
 const restartBtn = document.getElementById("restart-btn");
 
-// Function to load a question
+
 function loadQuestion() {
     const questionObj = questions[currentQuestionIndex];
     questionContainer.innerHTML = `
@@ -65,13 +65,13 @@ function loadQuestion() {
     nextBtn.disabled = true; // Disable next button until answer is selected
 }
 
-// Function to handle answer selection
+
 function selectAnswer(answer) {
     selectedAnswer = answer;
-    nextBtn.disabled = false; // Enable next button
+    nextBtn.disabled = false; 
 }
 
-// Function to handle next button click
+
 function nextQuestion() {
     const correctAnswer = questions[currentQuestionIndex].correctAnswer;
 
@@ -82,7 +82,7 @@ function nextQuestion() {
         feedbackContainer.innerHTML = `<span class='incorrect'>Incorrect! The correct answer is: ${correctAnswer}</span>`;
     }
 
-    // Disable options and proceed to next question after 1.5 seconds
+    
     const options = document.querySelectorAll(".options input");
     options.forEach(option => option.disabled = true);
 
@@ -97,7 +97,7 @@ function nextQuestion() {
     }, 1500);
 }
 
-// Function to show score
+
 function showScore() {
     questionContainer.style.display = "none";
     nextBtn.style.display = "none";
@@ -105,7 +105,7 @@ function showScore() {
     scoreDisplay.textContent = score;
 }
 
-// Function to restart the quiz
+
 function restartQuiz() {
     currentQuestionIndex = 0;
     score = 0;
@@ -117,9 +117,9 @@ function restartQuiz() {
     nextBtn.disabled = true;
 }
 
-// Event Listeners
+
 nextBtn.addEventListener("click", nextQuestion);
 restartBtn.addEventListener("click", restartQuiz);
 
-// Initialize quiz
+
 loadQuestion();
